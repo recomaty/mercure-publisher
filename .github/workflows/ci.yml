@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+
+      - name: Restore
+        run: dotnet restore R3Polska.Sse.Mercure.sln
+
+      - name: Build
+        run: dotnet build R3Polska.Sse.Mercure.sln --configuration Release --no-restore
+
+      - name: Unit tests (with coverage)
+        run: dotnet test R3Polska.Sse.Mercure.Tests/R3Polska.Sse.Mercure.Tests.csproj --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings
+
+      - name: Generate coverage summary
+        run: |
+          dotnet tool install -g dotnet-reportgenerator-globaltool
+          reportgenerator -reports:"R3Polska.Sse.Mercure.Tests/TestResults/**/coverage.cobertura.xml" -targetdir:"./coveragereport" -reporttypes:TextSummary
+
+      - name: Enforce coverage >= 90%
+        run: |
+          summary=$(grep -oP 'Line coverage: \K[0-9.]+' ./coveragereport/Summary.txt | head -n 1)
+          if [ -z "$summary" ]; then
+            echo "Coverage summary not found."
+            exit 1
+          fi
+          echo "Line coverage: $summary%"
+          awk -v cov="$summary" 'BEGIN { exit (cov+0 < 90) ? 1 : 0 }'
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: R3Polska.Sse.Mercure.Tests/TestResults/**/coverage.cobertura.xml
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}

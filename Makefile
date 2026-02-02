@@ -1,4 +1,4 @@
-.PHONY: build clear restore test prepare
+.PHONY: build clear restore test prepare coverage
 
 # Install required tools
 prepare:
@@ -18,6 +18,14 @@ clear:
 restore:
 	dotnet restore R3Polska.Sse.Mercure.sln
 
-# Run all tests with coverage
+# Run all tests
 test:
-	@echo "Note: No test projects found in solution. Skipping test execution."
+	dotnet test R3Polska.Sse.Mercure.Tests/R3Polska.Sse.Mercure.Tests.csproj
+
+# Run tests with coverage and generate HTML report
+coverage:
+	rm -rf R3Polska.Sse.Mercure.Tests/TestResults
+	dotnet test R3Polska.Sse.Mercure.Tests/R3Polska.Sse.Mercure.Tests.csproj --collect:"XPlat Code Coverage" --settings coverlet.runsettings
+	dotnet tool restore || dotnet tool install -g dotnet-reportgenerator-globaltool
+	reportgenerator -reports:"./R3Polska.Sse.Mercure.Tests/TestResults/**/coverage.cobertura.xml" -targetdir:"./coveragereport" -reporttypes:Html
+	@echo "Coverage report generated at coveragereport/index.html"
