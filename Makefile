@@ -1,4 +1,4 @@
-.PHONY: build clear restore test prepare coverage
+.PHONY: build clear restore test prepare coverage bdd test-all
 
 # Install required tools
 prepare:
@@ -29,3 +29,10 @@ coverage:
 	dotnet tool restore || dotnet tool install -g dotnet-reportgenerator-globaltool
 	reportgenerator -reports:"./R3Polska.Sse.Mercure.Tests/TestResults/**/coverage.cobertura.xml" -targetdir:"./coveragereport" -reporttypes:Html
 	@echo "Coverage report generated at coveragereport/index.html"
+
+# Run BDD tests
+bdd:
+	dotnet test R3Polska.Sse.Mercure.BddTests/R3Polska.Sse.Mercure.BddTests.csproj
+
+# Run all tests (unit + BDD)
+test-all: test bdd

@@ -42,6 +42,9 @@ jobs:
           echo "Line coverage: $summary%"
           awk -v cov="$summary" 'BEGIN { exit (cov+0 < 90) ? 1 : 0 }'
 
+      - name: BDD tests
+        run: dotnet test R3Polska.Sse.Mercure.BddTests/R3Polska.Sse.Mercure.BddTests.csproj --configuration Release
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:

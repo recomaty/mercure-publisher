@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R3Polska.Sse.Mercure", "R3P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R3Polska.Sse.Mercure.Tests", "R3Polska.Sse.Mercure.Tests\R3Polska.Sse.Mercure.Tests.csproj", "{7742899A-1EAC-4427-BCC0-9D18699FEA55}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R3Polska.Sse.Mercure.BddTests", "R3Polska.Sse.Mercure.BddTests\R3Polska.Sse.Mercure.BddTests.csproj", "{1436DC3D-3DAA-4501-95BB-BB8ED2C838AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{7742899A-1EAC-4427-BCC0-9D18699FEA55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7742899A-1EAC-4427-BCC0-9D18699FEA55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7742899A-1EAC-4427-BCC0-9D18699FEA55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1436DC3D-3DAA-4501-95BB-BB8ED2C838AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1436DC3D-3DAA-4501-95BB-BB8ED2C838AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1436DC3D-3DAA-4501-95BB-BB8ED2C838AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1436DC3D-3DAA-4501-95BB-BB8ED2C838AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
