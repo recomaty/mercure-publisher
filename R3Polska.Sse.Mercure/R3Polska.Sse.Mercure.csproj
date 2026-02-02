@@ -4,7 +4,23 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        
+        <!-- Package metadata -->
+        <Version>1.0.0</Version>
+        <Authors>R3 Polska sp. z o.o.;Bartosz Pachołek</Authors>
+        <Company>R3 Polska sp. z o.o.</Company>
+        <Description>A .NET client library for publishing messages to Mercure hubs via Server-Sent Events (SSE).</Description>
+        <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/recomaty/mercure-publisher</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageProjectUrl>https://github.com/recomaty/mercure-publisher</PackageProjectUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>mercure;sse;server-sent-events;realtime;pubsub</PackageTags>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
 
     <ItemGroup>
         <InternalsVisibleTo Include="R3Polska.Sse.Mercure.Tests" />

@@ -36,3 +36,6 @@ bdd:
 
 # Run all tests (unit + BDD)
 test-all: test bdd
+
+pack:
+	dotnet pack R3Polska.Sse.Mercure/R3Polska.Sse.Mercure.csproj -c Release -o ./nupkg

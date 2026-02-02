@@ -2,7 +2,7 @@
 
 A .NET 9 client library for publishing messages to [Mercure](https://mercure.rocks/) hubs via Server-Sent Events (SSE).
 
-[![CI](https://github.com/r3polska/mercure-client/actions/workflows/ci.yml/badge.svg)](https://github.com/r3polska/mercure-client/actions/workflows/ci.yml)
+[![CI](https://github.com/recomaty/mercure-publisher/actions/workflows/ci.yml/badge.svg)](https://github.com/recomaty/mercure-publisher/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/recomaty/mercure-publisher/graph/badge.svg?token=EzAKHM9DeH)](https://codecov.io/gh/recomaty/mercure-publisher)
 
 ## Features
